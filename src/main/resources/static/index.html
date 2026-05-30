@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Diamond Granites & Tiles</title>
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(-45deg, #0b0c0f, #1a1a1a, #111827, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      color: #f3f4f6;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 24px;
+
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(14px);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(250, 204, 21, 0.08);
+
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================= */
+
+    .hero {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .brand {
+      font-size: 52px;
+      font-weight: bold;
+      letter-spacing: 2px;
+
+      background: linear-gradient(90deg, #facc15, #fde68a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(250, 204, 21, 0.6);
+    }
+
+    .brand::after {
+      content: "";
+      display: block;
+      width: 220px;
+      height: 4px;
+      margin: 12px auto;
+      border-radius: 20px;
+
+      background: linear-gradient(90deg, #facc15, transparent);
+
+      box-shadow: 0 0 12px rgba(250, 204, 21, 0.7);
+    }
+
+    .sub-heading {
+      font-size: 22px;
+      margin-top: 10px;
+      color: #facc15;
+      font-weight: 600;
+    }
+
+    .description {
+      margin-top: 22px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #d1d5db;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tagline {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #fde68a;
+      font-weight: bold;
+
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .actions {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .actions a {
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+
+      transition: 0.3s ease;
+    }
+
+    .primary-btn {
+      background: linear-gradient(45deg, #facc15, #eab308);
+      color: #111827;
+    }
+
+    .secondary-btn {
+      background: #1f2937;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .actions a:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(250, 204, 21, 0.3);
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
+      margin-top: 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 15px;
+
+      background: linear-gradient(90deg, #facc15, #fde68a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      padding: 25px;
+      border-radius: 18px;
+
+      transition: 0.4s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(250, 204, 21, 0.4);
+
+      box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(250, 204, 21, 0.1);
+    }
+
+    .feature-card h3 {
+      color: #facc15;
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .feature-card p {
+      color: #d1d5db;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* =========================
+       ABOUT SECTION
+    ========================= */
+
+    .about {
+      margin-top: 70px;
+      text-align: center;
+      padding: 35px;
+
+      background: rgba(255, 255, 255, 0.04);
+
+      border-radius: 20px;
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .about p {
+      margin-top: 18px;
+      line-height: 1.9;
+      color: #d1d5db;
+      font-size: 16px;
+    }
+
+    /* =========================
+       CONTACT SECTION
+    ========================= */
+
+    .contact {
+      margin-top: 70px;
+      text-align: center;
+      padding: 35px;
+
+      border-radius: 20px;
+
+      background: linear-gradient(145deg,
+          rgba(250, 204, 21, 0.08),
+          rgba(255, 255, 255, 0.03));
+
+      border: 1px solid rgba(250, 204, 21, 0.15);
+    }
+
+    .contact h2 {
+      color: #facc15;
+      margin-bottom: 15px;
+      font-size: 34px;
+    }
+
+    .owner-name {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .phone {
+      margin-top: 12px;
+      font-size: 20px;
+      color: #fde68a;
+      font-weight: bold;
+    }
+
+    .contact p {
+      margin-top: 15px;
+      color: #d1d5db;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 25px;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: bold;
+
+      background: linear-gradient(90deg, #facc15, #fde68a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-text {
+      margin-top: 12px;
+      color: #9ca3af;
+      font-size: 15px;
+    }
+
+    .footer-text span {
+      color: #facc15;
+      font-weight: bold;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:768px) {
+
+      .brand {
+        font-size: 38px;
+      }
+
+      .sub-heading {
+        font-size: 18px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .container {
+        padding: 25px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HERO SECTION -->
+
+    <div class="hero">
+
+      <h1 class="brand">🪨 DIAMOND GRANITES & TILES</h1>
+
+      <div class="sub-heading">
+        Premium Granite • Luxury Tiles • Elegant Interiors
+      </div>
+
+      <p class="description">
+        Transform your home and commercial spaces with premium-quality granites,
+        designer tiles, and elegant interior solutions crafted for modern living.
+        We combine luxury, durability, and timeless beauty to give every space
+        a premium finish.
+      </p>
+
+      <div class="tagline">
+        Where Luxury Meets Durability ✨
+      </div>
+
+      <div class="actions">
+        <a href="/signup.html" class="primary-btn">
+          Signup
+        </a>
+
+        <a href="/login.html" class="secondary-btn">
+          Customer Login
+        </a>
+
+        <a href="/admin-login.html" class="primary-btn">
+          Admin Login
+        </a>
+      </div>
+
+    </div>
+
+    <!-- FEATURES SECTION -->
+
+    <div class="features">
+
+      <h2 class="section-title">
+        Our Premium Collections
+      </h2>
+
+      <p class="section-subtitle">
+        Elegant designs crafted for beautiful interiors and lasting impressions
+      </p>
+
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <h3>🪨 Premium Granites</h3>
+
+          <p>
+            High-quality natural granite collections with luxurious finishes,
+            exceptional durability, and timeless elegance.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✨ Designer Wall Tiles</h3>
+
+          <p>
+            Modern and stylish wall tile designs that enhance interiors with
+            texture, beauty, and sophistication.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🏡 Floor Tiles</h3>
+
+          <p>
+            Durable and attractive flooring solutions perfect for homes,
+            offices, showrooms, and commercial spaces.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>💎 Luxury Finishes</h3>
+
+          <p>
+            Premium marble-finish and glossy tile collections designed to create
+            elegant and modern living spaces.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ABOUT SECTION -->
+
+    <div class="about">
+
+      <h2 class="section-title">
+        Welcome to Diamond Granites & Tiles
+      </h2>
+
+      <p>
+        At Diamond Granites & Tiles, we believe every space deserves a premium
+        touch. From elegant granite slabs to stylish tile collections, we offer
+        high-quality materials that bring beauty, strength, and sophistication
+        into every project.
+      </p>
+
+      <p>
+        Whether you are building your dream home, renovating interiors, or
+        designing commercial spaces, our collections are crafted to deliver
+        lasting quality and timeless appeal.
+      </p>
+
+    </div>
+
+    <!-- CONTACT SECTION -->
+
+    <div class="contact">
+
+      <h2>📞 Contact Us</h2>
+
+      <div class="owner-name">
+        Abdul Wahab
+      </div>
+
+      <div class="phone">
+        📱 7095941251
+      </div>
+
+      <p>
+        Visit our showroom today and explore premium granite and tile collections
+        designed for modern homes and elegant interiors.
+      </p>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+      <div class="footer-logo">
+        🪨 DIAMOND GRANITES & TILES
+      </div>
+
+      <div class="footer-text">
+        <span>Premium</span> • Elegant • Durable
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- AUTO REDIRECT -->
+
+  <script>
+    if (localStorage.getItem("token")) {
+
+      const role = localStorage.getItem("role");
+
+      if (role === "ADMIN") {
+        window.location.href = "/admin-home.html";
+      } else {
+        window.location.href = "/customer-home.html";
+      }
+
+    }
+  </script>
+
+</body>
+
+</html>

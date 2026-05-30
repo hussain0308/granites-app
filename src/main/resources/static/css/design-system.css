@@ -1,0 +1,213 @@
+/* =========================================================
+   🌑 FULL DESIGN SYSTEM - DARK + GLOWING YELLOW THEME
+   ========================================================= */
+
+
+/* =========================================================
+   1. 🎯 ROOT VARIABLES (COLOR + SPACING SYSTEM)
+   ========================================================= */
+
+:root {
+  /* Backgrounds */
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-2: #222;
+  --border: #2a2a2a;
+
+  /* Primary Theme */
+  --primary: #ffd400;
+  --primary-dark: #e6bf00;
+
+  /* Glow Effect */
+  --glow: 0 0 8px rgba(255, 212, 0, 0.6),
+          0 0 20px rgba(255, 212, 0, 0.3);
+
+  /* Text */
+  --text: #e5e5e5;
+  --muted: #a1a1a1;
+
+  /* Spacing */
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Transition */
+  --transition: 0.2s ease-in-out;
+}
+
+
+/* =========================================================
+   2. 🌑 GLOBAL RESET + BODY
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  padding: var(--space-lg);
+}
+
+
+/* =========================================================
+   3. 🧱 TYPOGRAPHY SYSTEM
+   ========================================================= */
+
+h1 {
+  font-size: 28px;
+  color: var(--primary);
+  text-shadow: var(--glow);
+  margin-bottom: var(--space-md);
+}
+
+h2, h3 {
+  color: var(--primary);
+}
+
+p {
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   4. 📦 CARD SYSTEM (PRODUCTS, ORDERS, CART)
+   ========================================================= */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  transition: var(--transition);
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   5. 📋 LIST ITEM SYSTEM (CART / ORDER ITEMS)
+   ========================================================= */
+
+.list-item {
+  background: var(--surface-2);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+.list-item:hover {
+  box-shadow: var(--glow);
+}
+
+
+/* =========================================================
+   6. 🏷️ BADGE SYSTEM (STATUS LABELS)
+   ========================================================= */
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  box-shadow: var(--glow);
+}
+
+
+/* =========================================================
+   7. 🔘 BUTTON SYSTEM
+   ========================================================= */
+
+.btn {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: var(--primary);
+  color: black;
+  box-shadow: var(--glow);
+}
+
+.btn-danger {
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
+
+.btn-danger:hover {
+  background: #ff4d4d;
+  color: white;
+}
+
+
+/* =========================================================
+   8. 📐 GRID SYSTEM (PRODUCT LAYOUT)
+   ========================================================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+
+/* =========================================================
+   9. ✨ STATUS / SPECIAL TEXT
+   ========================================================= */
+
+.status {
+  color: var(--primary);
+  font-weight: bold;
+  text-shadow: var(--glow);
+}
+
+
+/* =========================================================
+   10. ⚡ ORDER CARD ENHANCEMENT (OPTIONAL UPGRADE)
+   ========================================================= */
+
+.order-card {
+  background: var(--surface);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.order-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}

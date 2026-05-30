@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Orders</title>
+
+<style>
+:root {
+  --primary: #ffd400;
+  --glow: 0 0 10px #ffd400, 0 0 20px #ffd400;
+}
+
+body {
+  font-family: Arial;
+  background: #0f0f0f;
+  color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--primary);
+  text-shadow: var(--glow);
+}
+
+/* ORDER CARD */
+.order-card {
+  background: #1a1a1a;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  transition: 0.3s;
+}
+
+.order-card:hover {
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+
+/* HEADER */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+/* ITEMS */
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background: #222;
+  margin-top: 5px;
+  border-radius: 6px;
+}
+
+/* TRACKING BAR */
+.tracker {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+  font-size: 12px;
+  color: #888;
+}
+
+.step.active {
+  color: var(--primary);
+  text-shadow: var(--glow);
+}
+
+/* LINE */
+.line {
+  position: absolute;
+  top: 12px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #333;
+  z-index: -1;
+}
+
+/* BUTTONS */
+button {
+  background: #1a1a1a;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+}
+
+.cancel-btn:hover {
+  background: red;
+}
+
+.back-btn {
+  background: var(--primary);
+  color: black;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📦 My Orders</h1>
+
+<div id="ordersContainer"></div>
+
+<button class="back-btn" onclick="goBackToHome()">Back</button>
+
+<script src="/js/my-orders.js"></script>
+
+</body>
+</html>
