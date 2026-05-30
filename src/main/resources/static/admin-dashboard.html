@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	
+	<style>
+		/* ================= DASHBOARD WRAPPER ================= */
+
+		.dashboard {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		  gap: 20px;
+		  margin-top: 25px;
+		}
+
+		/* ================= CARD ================= */
+
+		.card {
+		  background: linear-gradient(145deg, #111827, #1f2937);
+		  border-radius: 14px;
+		  padding: 22px;
+		  text-align: center;
+
+		  border: 1px solid rgba(250, 204, 21, 0.08);
+
+		  box-shadow:
+		    0 6px 18px rgba(0, 0, 0, 0.6);
+
+		  transition: all 0.3s ease;
+		}
+
+		/* Hover glow (your yellow theme) */
+		.card:hover {
+		  transform: translateY(-6px);
+		  box-shadow:
+		    0 10px 28px rgba(250, 204, 21, 0.25),
+		    0 0 18px rgba(250, 204, 21, 0.15);
+		  border-color: rgba(250, 204, 21, 0.4);
+		}
+
+		/* ================= TITLE ================= */
+
+		.card-title {
+		  font-size: 13px;
+		  letter-spacing: 1.2px;
+		  text-transform: uppercase;
+
+		  color: #9ca3af; /* soft gray (matches your UI) */
+
+		  margin-bottom: 10px;
+		}
+
+		/* ================= VALUE ================= */
+
+		.card-value {
+		  font-size: 30px;
+		  font-weight: 700;
+
+		  color: #facc15; /* YOUR main accent */
+		  text-shadow:
+		    0 0 10px rgba(250, 204, 21, 0.6),
+		    0 0 18px rgba(250, 204, 21, 0.3);
+		}
+
+		/* ================= RUPEE ================= */
+
+		.rupee {
+		  color: #facc15;
+		  text-shadow: 0 0 10px rgba(250, 204, 21, 0.7);
+		}
+
+		/* ================= SUB TEXT (optional future use) ================= */
+
+		.card-subtext {
+		  margin-top: 6px;
+		  font-size: 12px;
+		  color: #6b7280;
+		}
+		
+		
+		.dashboard-header {
+		  display: flex;
+		  justify-content: flex-start;
+		  margin-bottom: 15px;
+		}
+
+		/* Back button styled like your system */
+		.back-btn {
+		  padding: 10px 16px;
+		  border-radius: 10px;
+		  border: none;
+		  cursor: pointer;
+
+		  font-weight: 700;
+		  font-size: 14px;
+
+		  background: linear-gradient(135deg, #facc15, #fde68a);
+		  color: #111827;
+
+		  box-shadow:
+		    0 4px 12px rgba(250, 204, 21, 0.3);
+
+		  transition: all 0.3s ease;
+		}
+
+		.back-btn:hover {
+		  transform: scale(1.05);
+		  box-shadow:
+		    0 6px 18px rgba(250, 204, 21, 0.6),
+		    0 0 12px rgba(250, 204, 21, 0.4);
+		}
+
+		.back-btn:active {
+		  transform: scale(0.97);
+		}
+		
+	</style>
+
+  <div class="container">
+
+	
+	<div class="dashboard-header">
+
+	  <button class="back-btn" onclick="goToAdminHome()">
+	     Back to Admin Home
+	  </button>
+
+	</div>
+	
+	
+	<div class="dashboard">
+		
+		
+
+	  <div class="card">
+	    <div class="card-title">Total Users</div>
+	    <div class="card-value" id="usersCount">0</div>
+	  </div>
+
+	  <div class="card">
+	    <div class="card-title">Total Products</div>
+	    <div class="card-value" id="productsCount">0</div>
+	  </div>
+
+	  <div class="card">
+	    <div class="card-title">Total Orders</div>
+	    <div class="card-value" id="ordersCount">0</div>
+	  </div>
+
+	  <div class="card">
+	    <div class="card-title">Revenue</div>
+	    <div class="card-value" id="revenueCount">₹0</div>
+	  </div>
+
+	</div>
+  </div>
+
+  <script src="/js/admin-dashboard.js"></script>
+</body>
+</html>

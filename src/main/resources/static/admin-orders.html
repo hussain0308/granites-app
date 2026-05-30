@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Orders</title>
+
+<style>
+:root {
+  --primary: #ffd400;
+  --glow: 0 0 10px #ffd400, 0 0 20px #ffd400;
+}
+
+/* =========================
+   BASE THEME (MATCH MY ORDERS)
+========================= */
+body {
+  font-family: Arial;
+  background: #0f0f0f;
+  color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--primary);
+  text-shadow: var(--glow);
+}
+
+/* =========================
+   ORDER CARD (UNIFIED STYLE)
+========================= */
+.order-card {
+  background: #1a1a1a;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  transition: 0.3s;
+}
+
+.order-card:hover {
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   NEW ORDER GLOW
+========================= */
+.new-order {
+
+  border: 2px solid #ffd400;
+
+  box-shadow:
+    0 0 10px #ffd400,
+    0 0 20px rgba(255, 212, 0, 0.5);
+
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+
+  0% {
+    box-shadow:
+      0 0 8px rgba(255, 212, 0, 0.4);
+  }
+
+  50% {
+    box-shadow:
+      0 0 20px rgba(255, 212, 0, 0.9);
+  }
+
+  100% {
+    box-shadow:
+      0 0 8px rgba(255, 212, 0, 0.4);
+  }
+}
+
+/* HEADER */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* STATUS LABEL */
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+/* =========================
+   PRODUCT ITEMS
+========================= */
+.item-box {
+  background: #222;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* =========================
+   ADMIN CONTROLS
+========================= */
+select {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: #1a1a1a;
+  color: white;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+button {
+  background: #1a1a1a;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  box-shadow: var(--glow);
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+.back-btn {
+  background: var(--primary);
+  color: black;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.back-btn:hover {
+  box-shadow: var(--glow);
+  transform: scale(1.05);
+}
+
+/* REFRESH BUTTON */
+.refresh-btn {
+  margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+/* =========================
+   FILTER BAR
+========================= */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  align-items: center;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: white;
+  min-width: 220px;
+}
+
+/* =========================
+   STATS GRID
+========================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}
+
+.stat-card h3 {
+  color: var(--primary);
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   STATUS COLORS
+========================= */
+.status.PLACED {
+  background: rgba(255, 212, 0, 0.15);
+}
+
+.status.SHIPPED {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+.status.OUT_FOR_DELIVERY {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border-color: #c084fc;
+}
+
+.status.DELIVERED {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+.status.CANCELLED {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: #f87171;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📦 Admin Orders</h1>
+
+
+<button class="back-btn" onclick="goBackToAdminHome()">
+     Back to Admin Home
+</button>
+
+
+
+
+<!-- =========================
+     FILTER SECTION
+========================= -->
+<div class="filter-bar">
+
+    <!-- STATUS FILTER -->
+    <select id="statusFilter">
+
+        <option value="ALL">
+            📦 All Orders
+        </option>
+
+        <option value="PLACED">
+            🆕 Placed
+        </option>
+
+        <option value="SHIPPED">
+            🚚 Shipped
+        </option>
+
+        <option value="OUT_FOR_DELIVERY">
+            🛵 Out For Delivery
+        </option>
+
+        <option value="DELIVERED">
+            ✅ Delivered
+        </option>
+
+        <option value="CANCELLED">
+            ❌ Cancelled
+        </option>
+
+    </select>
+
+    <!-- SEARCH -->
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search Order ID / Customer"
+    />
+
+</div>
+
+<!-- =========================
+     ORDER STATS
+========================= -->
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <h3 id="totalOrders">0</h3>
+        <p>📦 Total Orders</p>
+    </div>
+
+    <div class="stat-card">
+        <h3 id="deliveredOrders">0</h3>
+        <p>✅ Delivered</p>
+    </div>
+
+    <div class="stat-card">
+        <h3 id="cancelledOrders">0</h3>
+        <p>❌ Cancelled</p>
+    </div>
+
+    <div class="stat-card">
+        <h3 id="totalRevenue">₹0</h3>
+        <p>💰 Revenue</p>
+    </div>
+
+</div>
+
+<div id="ordersContainer"></div>
+
+<script src="/js/admin-orders.js"></script>
+
+</body>
+</html>

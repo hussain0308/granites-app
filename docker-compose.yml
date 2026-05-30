@@ -1,0 +1,45 @@
+services:
+
+  mysql:
+    image: mysql:8.4
+
+    container_name: mysql-db
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: fullstack_app_db
+      MYSQL_USER: dockeruser
+      MYSQL_PASSWORD: docker123
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+
+    container_name: granites-app
+
+    restart: always
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - mysql
+
+
+    environment:
+      MAIL_USERNAME: hussainbasha0308@gmail.com
+      MAIL_PASSWORD: qlbbmatcdfxyfsnr
+      JWT_SECRET: boKqNHuMbwOzRI3J7nOKjsohsEGpozsEadYOrEXmkSp
+      CLOUDINARY_CLOUD_NAME: di867tyqv
+      CLOUDINARY_API_KEY: 418612689625666
+      CLOUDINARY_API_SECRET: JppmeEj4BaExNwN4q6g7OMOf_us
+
+volumes:
+  mysql_data:

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      color: #e5e7eb;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 26px;
+      letter-spacing: 1px;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input {
+      width: 100%;
+      max-width: 320px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      max-width: 320px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #facc15;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+	.back-link:hover {
+	  transform: translateY(-2px) scale(1.05);
+
+	  box-shadow: 
+	    0 8px 20px rgba(250, 204, 21, 0.6),
+	    0 0 15px rgba(250, 204, 21, 0.5);
+
+	  background: linear-gradient(135deg, #fde68a, #facc15);
+	}
+	
+    #message {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+	.back-link {
+	  display: inline-block;
+	  margin-top: 20px;
+	  padding: 10px 20px;
+
+	  background: linear-gradient(135deg, #facc15, #fde68a);
+	  color: #000;
+
+	  font-weight: 600;
+	  border-radius: 10px;
+	  text-decoration: none;
+
+	  transition: all 0.3s ease;
+	  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+	}
+	
+	.back-link:active {
+	  transform: scale(0.97);
+	  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+	}
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h2>Create Account</h2>
+
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="text" id="username" placeholder="Username" required />
+	  <input 
+	    type="email" 
+	    id="email" 
+	    placeholder="Email Address (must be @gmail.com)" 
+	    pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
+	    required
+	  />
+      <input type="text" id="address" placeholder="Address" required />
+	  <input
+	    type="tel"
+	    id="phoneNumber"
+	    placeholder="Phone Number"
+	    required
+	  />
+      <input type="password" id="password" placeholder="Password" required />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p id="message"></p>
+
+    <div style="text-align:center;">
+      <a href="/index.html" class="back-link">Back</a>
+    </div>
+
+  </div>
+
+  <script src="/js/auth.js"></script>
+
+</body>
+</html>
