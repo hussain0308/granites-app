@@ -383,3 +383,7 @@ document.addEventListener(
     "DOMContentLoaded",
     loadExploreProducts
 );
+
+function goBack() {
+    window.history.back();
+}
