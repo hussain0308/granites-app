@@ -225,6 +225,39 @@
             cursor:pointer;
             color:white;
         }
+		
+		.top-actions{
+		    margin-bottom:20px;
+		}
+
+		.back-btn{
+		    padding:12px 22px;
+		    border:none;
+		    border-radius:12px;
+
+		    background:linear-gradient(
+		        135deg,
+		        #facc15,
+		        #fde68a
+		    );
+
+		    color:#111827;
+		    font-weight:700;
+		    cursor:pointer;
+
+		    transition:.3s;
+
+		    box-shadow:
+		      0 4px 12px rgba(250,204,21,.35);
+		}
+
+		.back-btn:hover{
+		    transform:translateY(-2px);
+
+		    box-shadow:
+		      0 10px 25px rgba(250,204,21,.45),
+		      0 0 15px rgba(250,204,21,.35);
+		}
 
     </style>
 </head>
@@ -240,9 +273,24 @@
     <p class="explore-subtitle">
         Browse premium granites, tiles and luxury finishes
     </p>
+	
+	<button class="back-btn-top" onclick="goBack()">
+	   ← Back
+	</button>
 
     <div id="productList"></div>
+	
+	<div class="bottom-actions">
 
+	   <button
+	      class="back-btn"
+	      onclick="goBack()">
+
+	      ← Back to Home
+
+	   </button>
+
+	</div>
 </div>
 
 <script src="/js/explore.js"></script>
