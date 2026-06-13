@@ -67,7 +67,9 @@ public class SecurityConfig {
                             "/view-product-admin.html",
                             "/admin-dashboard.html",
                             "/admin-orders.html",
-
+                            
+                            "/explore.html",
+                            
                             "/css/**",
                             "/js/**",
                             "/images/**",
