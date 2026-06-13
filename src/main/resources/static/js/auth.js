@@ -1,4 +1,4 @@
-// ================= REGISTER =================
+	// ================= REGISTER =================
 async function registerUser(event) {
 
     event.preventDefault();
