@@ -43,7 +43,7 @@ public class OtpService {
     ) {
         this.restTemplate = restTemplate;
         this.userRepository = userRepository;
-        this.fromEmail = "yourverifiedemail@gmail.com";
+        this.fromEmail = "hussainbasha0308@gmail.com";
     }
 
     // =========================
