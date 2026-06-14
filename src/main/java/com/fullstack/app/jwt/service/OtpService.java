@@ -26,7 +26,7 @@ public class OtpService {
 	private final RestTemplate restTemplate;
     private final UserRepository userRepository;
     
-    @Value("${BREVO_API_KEY}")
+    @Value("${brevo.api.key}")
     private String brevoApiKey;
 
     private final SecureRandom secureRandom = new SecureRandom();
