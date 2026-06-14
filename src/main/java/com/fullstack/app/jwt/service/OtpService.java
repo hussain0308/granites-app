@@ -1,21 +1,33 @@
 package com.fullstack.app.jwt.service;
 
 import java.security.SecureRandom;
+
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.beans.factory.annotation.Value;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+
+import org.springframework.web.client.RestTemplate;
+
+
 import org.springframework.stereotype.Service;
+
 
 import com.fullstack.app.jwt.repository.UserRepository;
 
 @Service
 public class OtpService {
 
-    private final JavaMailSender javaMailSender;
+	private final RestTemplate restTemplate;
     private final UserRepository userRepository;
+    
+    @Value("${BREVO_API_KEY}")
+    private String brevoApiKey;
 
     private final SecureRandom secureRandom = new SecureRandom();
 
@@ -25,12 +37,13 @@ public class OtpService {
     private final String fromEmail;
 
     // constructor
-    public OtpService(JavaMailSender javaMailSender,
-                       UserRepository userRepository) {
-        this.javaMailSender = javaMailSender;
+    public OtpService(
+            RestTemplate restTemplate,
+            UserRepository userRepository
+    ) {
+        this.restTemplate = restTemplate;
         this.userRepository = userRepository;
-
-        this.fromEmail = "no-reply@yourapp.com";
+        this.fromEmail = "yourverifiedemail@gmail.com";
     }
 
     // =========================
@@ -56,22 +69,11 @@ public class OtpService {
                 )
         );
 
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setFrom(fromEmail);
-        message.setTo(email);
-        message.setSubject("Password Reset OTP");
-
-        message.setText(
-                "Hello,\n\n" +
-                "We received a request to reset your password.\n\n" +
-                "Your OTP is: " + otp + "\n\n" +
-                "This OTP is valid for 2 minutes only.\n" +
-                "Do not share this OTP with anyone.\n\n" +
-                "Regards,\nSupport Team"
+        sendEmailViaBrevo(
+                email,
+                otp
         );
-
-        javaMailSender.send(message);
+       
 
         System.out.println("OTP sent to: " + email);
         System.out.println("Generated OTP: " + otp);
@@ -79,7 +81,59 @@ public class OtpService {
     
     
 
-    // =========================
+    private void sendEmailViaBrevo(
+            String email,
+            String otp
+    ) {
+
+        String url =
+            "https://api.brevo.com/v3/smtp/email";
+
+        HttpHeaders headers =
+                new HttpHeaders();
+
+        headers.setContentType(
+                MediaType.APPLICATION_JSON
+        );
+
+        headers.set(
+                "api-key",
+                brevoApiKey
+        );
+
+        String body = """
+        {
+          "sender": {
+            "name": "Diamond Granites",
+            "email": "%s"
+          },
+          "to": [
+            {
+              "email": "%s"
+            }
+          ],
+          "subject": "Password Reset OTP",
+          "htmlContent": "<h2>Password Reset</h2><p>Your OTP is:</p><h1>%s</h1><p>Valid for 2 minutes.</p>"
+        }
+        """.formatted(
+                fromEmail,
+                email,
+                otp
+        );
+
+        HttpEntity<String> request =
+                new HttpEntity<>(
+                        body,
+                        headers
+                );
+
+        restTemplate.postForEntity(
+                url,
+                request,
+                String.class
+        );
+    }
+	// =========================
     // GENERATE OTP
     // =========================
     private String generateOtp() {

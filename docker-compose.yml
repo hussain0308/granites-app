@@ -40,6 +40,8 @@ services:
       CLOUDINARY_CLOUD_NAME: di867tyqv
       CLOUDINARY_API_KEY: 418612689625666
       CLOUDINARY_API_SECRET: JppmeEj4BaExNwN4q6g7OMOf_us
+      BREVO_API_KEY: ${BREVO_API_KEY}
+	  
 
 volumes:
   mysql_data:
