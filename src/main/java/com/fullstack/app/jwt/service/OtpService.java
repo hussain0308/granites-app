@@ -95,6 +95,8 @@ public class OtpService {
         headers.setContentType(
                 MediaType.APPLICATION_JSON
         );
+        
+        System.out.println("BREVO_API_KEY = " + brevoApiKey);
 
         headers.set(
                 "api-key",
@@ -127,11 +129,24 @@ public class OtpService {
                         headers
                 );
 
-        restTemplate.postForEntity(
-                url,
-                request,
-                String.class
-        );
+        try {
+
+            var response = restTemplate.postForEntity(
+                    url,
+                    request,
+                    String.class
+            );
+
+            System.out.println("BREVO RESPONSE: " + response.getBody());
+
+        } catch (org.springframework.web.client.HttpClientErrorException e) {
+
+            System.out.println("STATUS = " + e.getStatusCode());
+
+            System.out.println("BODY = " + e.getResponseBodyAsString());
+
+            throw e;
+        }
     }
 	// =========================
     // GENERATE OTP
